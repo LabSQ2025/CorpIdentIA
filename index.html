@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infografía: Fiabilidad de Detectores de IA</title>
+    <title>Infografía: Los resultados del proyecto 'CorpidentIA'</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons para los íconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -17,485 +19,652 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
             height: 300px;
-            max-height: 400px;
         }
         @media (min-width: 768px) {
             .chart-container {
                 height: 350px;
             }
         }
-        .stat-card h3 {
-            font-size: 4rem;
-            line-height: 1;
+        .section-title::before, .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: #22d3ee;
+            top: 50%;
         }
-        /* Estilos específicos para el gráfico de radar */
-        .radar-chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 400px;
+        .section-title::before {
+            left: -60px;
         }
-        @media (min-width: 768px) {
-            .radar-chart-container {
-                height: 450px;
-            }
+        .section-title::after {
+            right: -60px;
+        }
+        /* Custom animation for the blob background effect */
+        @keyframes blob {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body class="bg-gray-950 text-gray-200">
+    <!-- Background Gradient Effect -->
+    <div class="absolute inset-0 z-0 opacity-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-fuchsia-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+    </div>
+    
+    <div class="container mx-auto p-4 md:p-12 relative z-10">
 
-    <div class="container mx-auto p-4 md:p-8">
-
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">¿IA, Humano o Híbrido?</h1>
-            <p class="text-xl text-cyan-400">Fiabilidad de Herramientas de Detección de IA en Textos Multiautoría</p>
-            <p class="text-sm text-gray-400 mt-2">Basado en el estudio del proyecto CorpIdentIA</p>
+        <header class="text-center mb-16">
+            <img src="https://www.sq-linguistasforenses.com/uploads/8/3/2/6/83268456/published/logo.jpeg?1742736455" alt="Logo del proyecto CorpIdentIA" class="w-48 mx-auto h-auto rounded-xl mb-6">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">Los resultados del proyecto 'CorpidentIA'</h1>
+            <h3 class="text-2xl text-cyan-400 font-medium">Evaluación de detectores de IA en textos escritos</h3>
+            <p class="text-md text-gray-400 mt-4">
+                Dra. Sheila Queralt<br>
+                Directora Laboratorio SQ-Lingüistas Forenses
+            </p>
         </header>
 
-        <section class="mb-16">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-white mb-4">El Desafío de la Autoría en la Era de la IA</h2>
-                <p class="text-lg text-gray-300">
-                    La rápida adopción de Grandes Modelos de Lenguaje (LLM, por sus siglas en inglés) como ChatGPT, Gemini y Grok ha creado una necesidad urgente de verificar la autoría de los textos. En contextos críticos como el académico, legal o forense, saber si un texto fue escrito por un humano, una IA o una combinación de ambos es fundamental. Este estudio evalúa tres detectores comerciales para determinar su fiabilidad en esta tarea.
+        <section class="mb-20">
+            <div class="text-center max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-white mb-6 relative section-title">
+                    <i class="ph ph-sparkle text-5xl text-cyan-400"></i>
+                    El Desafío de la Autoría
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    La proliferación de modelos de lenguaje avanzados como ChatGPT, Gemini y Grok hace imperativo verificar la autoría de los textos. Este estudio analiza la efectividad de tres detectores comerciales, revelando las fortalezas y debilidades de la tecnología actual.
                 </p>
             </div>
+            <!-- Nuevo contenido para la sección "El Desafío de la Autoría" -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700">
+                    <h3 class="flex items-center text-xl font-bold text-cyan-400 mb-4">
+                        <i class="ph ph-target-arrow text-2xl mr-2"></i>
+                        1. ¿Por qué es importante detectar texto generado por IA?
+                    </h3>
+                    <ul class="list-none space-y-3 text-gray-300 text-sm">
+                        <li class="flex items-center"><i class="ph ph-graduation-cap text-lg text-cyan-400 mr-2"></i> Mantener la integridad académica y profesional.</li>
+                        <li class="flex items-center"><i class="ph ph-megaphone text-lg text-cyan-400 mr-2"></i> Combatir la desinformación y las noticias falsas a gran escala.</li>
+                        <li class="flex items-center"><i class="ph ph-gavel text-lg text-cyan-400 mr-2"></i> Atribuir la autoría en contextos legales o forenses.</li>
+                        <li class="flex items-center"><i class="ph ph-user-list text-lg text-cyan-400 mr-2"></i> Preservar la identidad y la voz autoral del ser humano.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700">
+                    <h3 class="flex items-center text-xl font-bold text-cyan-400 mb-4">
+                        <i class="ph ph-warning-circle text-2xl mr-2"></i>
+                        2. Riesgos y retos actuales
+                    </h3>
+                    <ul class="list-none space-y-3 text-gray-300 text-sm">
+                        <li class="flex items-center"><i class="ph ph-x-circle text-lg text-cyan-400 mr-2"></i> Falsos positivos: Un texto humano se clasifica como IA.</li>
+                        <li class="flex items-center"><i class="ph ph-x-circle text-lg text-cyan-400 mr-2"></i> Falsos negativos: Un texto de IA se clasifica como humano.</li>
+                        <li class="flex items-center"><i class="ph ph-git-fork text-lg text-cyan-400 mr-2"></i> Detección de textos híbridos: El mayor reto para las herramientas actuales.</li>
+                        <li class="flex items-center"><i class="ph ph-arrows-clockwise text-lg text-cyan-400 mr-2"></i> La rápida evolución de los modelos de IA los hace difíciles de rastrear.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 md:col-span-2">
+                    <h3 class="flex items-center text-xl font-bold text-cyan-400 mb-4">
+                        <i class="ph ph-tool-hamer text-2xl mr-2"></i>
+                        3. Las limitaciones de los detectores de IA
+                    </h3>
+                    <p class="text-sm text-gray-300 mb-3 leading-relaxed">
+                        A pesar de los avances, existen dos limitaciones sistemáticas en la evaluación de los detectores de IA.
+                    </p>
+                    <ul class="list-none space-y-3 text-gray-300 text-sm">
+                        <li class="flex items-start"><i class="ph ph-translate text-lg text-cyan-400 mr-2"></i> <strong>Sesgo Lingüístico:</strong> Los detectores suelen mostrar un desempeño muy bajo ante contextos multilingües, con un sesgo hacia determinadas lenguas.</li>
+                        <li class="flex items-start"><i class="ph ph-puzzle-piece text-lg text-cyan-400 mr-2"></i> <strong>Textos Híbridos:</strong> El rendimiento es bueno en clasificaciones binarias (textos 100% humanos o 100% sintéticos), pero disminuye considerablemente al identificar textos híbridos (cocreación de IA y humanos).</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700">
+                    <h3 class="flex items-center text-xl font-bold text-cyan-400 mb-4">
+                        <i class="ph ph-book-open text-2xl mr-2"></i>
+                        4. Lo que dice la literatura científica
+                    </h3>
+                    <ul class="list-none space-y-3 text-gray-300 text-sm">
+                        <li class="flex items-start"><i class="ph ph-quotes text-lg text-cyan-400 mr-2"></i> La detección automática es, en el mejor de los casos, una herramienta complementaria, no definitiva.</li>
+                        <li class="flex items-start"><i class="ph ph-quotes text-lg text-cyan-400 mr-2"></i> Se señala el problema del **"detector de sesgos"**, donde los detectores pueden confundir textos de un cierto estilo (ej. formal o técnico) con texto generado por IA.</li>
+                        <li class="flex items-start"><i class="ph ph-quotes text-lg text-cyan-400 mr-2"></i> La co-creación humana-IA genera textos híbridos que los detectores no están preparados para evaluar.</li>
+                        <li class="flex items-start"><i class="ph ph-quotes text-lg text-cyan-400 mr-2"></i> Se recomienda la intervención de expertos en lingüística forense para la atribución de autoría.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Fin del nuevo contenido -->
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-white text-center mb-8">Metodología del Estudio</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Corpus Experimental</h3>
-                    <p class="text-5xl font-bold text-white">180</p>
-                    <p class="text-gray-400">textos en español analizados</p>
+        <!-- Nueva sección de Objetivos -->
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 relative section-title">
+                <i class="ph ph-target-arrow text-5xl text-cyan-400"></i>
+                Objetivos del Estudio
+            </h2>
+            <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700">
+                <h3 class="text-2xl font-bold text-cyan-400 mb-4">Objetivo Principal</h3>
+                <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                    Evaluar la fiabilidad de tres detectores comerciales de texto generado por inteligencia artificial (GPTZero, Copyleaks y Originality.ai) en diferentes tipos de autoría textual (humana, artificial y mixta), mediante un experimento controlado con corpus multiautoría en español.
+                </p>
+                <h3 class="text-2xl font-bold text-cyan-400 mb-4">Subobjetivos Específicos</h3>
+                <ul class="list-none space-y-4 text-gray-300">
+                    <li class="flex items-start">
+                        <i class="ph ph-check-circle text-2xl text-cyan-400 mr-3"></i>
+                        <span class="flex-1">Determinar la precisión de los detectores al clasificar correctamente textos 100% humanos y 100% generados por IA.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ph ph-check-circle text-2xl text-cyan-400 mr-3"></i>
+                        <span class="flex-1">Analizar el rendimiento de las herramientas ante textos híbridos (cocreación o edición cruzada entre humanos y modelos IA).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ph ph-check-circle text-2xl text-cyan-400 mr-3"></i>
+                        <span class="flex-1">Comparar la fiabilidad de los detectores según el modelo generador del texto (GPT-4, Gemini, Grok).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ph ph-check-circle text-2xl text-cyan-400 mr-3"></i>
+                        <span class="flex-1">Identificar los riesgos de falsos positivos o negativos, especialmente en textos humanos con estilo técnico o académico.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ph ph-check-circle text-2xl text-cyan-400 mr-3"></i>
+                        <span class="flex-1">Explorar el impacto de distintos tipos de intervención humana (errores intencionados, reescritura emocional, puntuación) sobre la clasificación de textos híbridos.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Metodología detallada con tarjetas -->
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 relative section-title">
+                <i class="ph ph-flask text-5xl text-cyan-400"></i>
+                Metodología del Estudio
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tarjeta: Corpus de Textos -->
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400 flex flex-col items-center text-center">
+                    <i class="ph ph-books text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-4">Corpus de Textos</h3>
+                    <div class="w-full text-sm">
+                        <table class="w-full text-left text-gray-300">
+                            <tbody class="text-sm">
+                                <tr class="border-b border-gray-700">
+                                    <td class="py-1 font-semibold">Textos IA + Humanos</td>
+                                    <td class="py-1 text-right">90</td>
+                                </tr>
+                                <tr class="border-b border-gray-700">
+                                    <td class="py-1 font-semibold">Textos Humanos + IA</td>
+                                    <td class="py-1 text-right">30</td>
+                                </tr>
+                                <tr class="border-b border-gray-700">
+                                    <td class="py-1 font-semibold">Textos Humanos</td>
+                                    <td class="py-1 text-right">30</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1 font-semibold">Textos IA</td>
+                                    <td class="py-1 text-right">30</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-gray-400 text-xs mt-4">
+                        Un total de 180 textos originales en español.
+                    </p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Modalidades de Texto</h3>
-                    <ul class="text-left list-disc list-inside text-gray-300 mx-auto inline-block">
-                        <li>100% Humano (H)</li>
-                        <li>100% IA (ChatGPT, Gemini, Grok)</li>
-                        <li>Humano + IA (H+IA)</li>
-                        <li>IA + Humano (IA+H)</li>
-                    </ul>
+
+                <!-- Tarjeta: Tipos de Textos (ACTUALIZADA) -->
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400 flex flex-col text-center">
+                    <i class="ph ph-scribble-loop text-5xl text-cyan-400 mb-4 self-center"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Tipos de Textos</h3>
+                    <p class="text-gray-400 text-xs mb-4">Clasificación por tipo de autoría.</p>
+                    <div class="flex-grow w-full text-sm text-left pl-4">
+                        <ul class="list-none space-y-4">
+                            <li>
+                                <span class="font-bold text-cyan-400 text-base">Puros:</span>
+                                <ul class="list-none text-gray-300 text-sm pl-2">
+                                    <li class="flex items-center mt-1"><i class="ph ph-user text-base text-cyan-400 mr-2"></i> Humano (H): Creado íntegramente por una persona.</li>
+                                    <li class="flex items-center mt-1"><i class="ph ph-robot text-base text-cyan-400 mr-2"></i> IA: Generado completamente por un modelo de IA.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="font-bold text-cyan-400 text-base">Mixtos:</span>
+                                <ul class="list-none text-gray-300 text-sm pl-2">
+                                    <li class="flex items-center mt-1"><i class="ph ph-robot-duotone text-base text-cyan-400 mr-2"></i> IA + H: Generado por IA y post-editado por un humano.</li>
+                                    <li class="flex items-center mt-1"><i class="ph ph-user-duotone text-base text-cyan-400 mr-2"></i> H + IA: Iniciado por un humano y editado/expandido por IA.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Detectores Evaluados</h3>
-                     <ul class="text-gray-300 space-y-2">
-                        <li><span class="font-bold text-white">Originality.ai</span></li>
-                        <li><span class="font-bold text-white">GPTZero</span></li>
-                        <li><span class="font-bold text-white">Copyleaks</span></li>
+
+                <!-- Tarjeta: Detectores Evaluados -->
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400 text-center">
+                    <i class="ph ph-magnifying-glass text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Detectores Evaluados</h3>
+                    <ul class="list-none text-gray-300 text-sm space-y-3 text-left">
+                        <li><span class="font-bold text-white">Originality.ai:</span> v2.0 (Feb. 2024), sin clasificación híbrida.</li>
+                        <li><span class="font-bold text-white">GPTZero:</span> v2.0 (Feb. 2024), análisis frase a frase.</li>
+                        <li><span class="font-bold text-white">Copyleaks:</span> versión de marzo de 2024, permite clasificación híbrida.</li>
                     </ul>
+                    <p class="text-gray-400 text-xs mt-4">
+                        Se utilizaron las configuraciones por defecto de cada herramienta.
+                    </p>
+                </div>
+
+                 <!-- Tarjeta: Modelos Generadores de Texto -->
+                <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400 text-center">
+                    <i class="ph ph-robot text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Modelos de IA Usados</h3>
+                    <ul class="list-none text-gray-300 text-sm space-y-3 text-left">
+                        <li><span class="font-bold text-white">ChatGPT:</span> GPT-4 Turbo (Marzo 2024).</li>
+                        <li><span class="font-bold text-white">Gemini:</span> Gemini 1.5 Pro.</li>
+                        <li><span class="font-bold text-white">Grok:</span> Grok 1.5.</li>
+                    </ul>
+                    <p class="text-gray-400 text-xs mt-4">
+                        Los textos IA se generaron con estas versiones de los modelos más avanzados.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-white text-center mb-8">Rendimiento en Textos Puros: Humano vs. IA</h2>
-            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
-                La fiabilidad de cada herramienta varía en la tarea más simple de clasificar textos 100% humanos o 100% de IA. A continuación se presentan las métricas de rendimiento clave.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 relative section-title">
+                <i class="ph ph-chart-bar text-5xl text-cyan-400"></i>
+                Rendimiento en Textos Puros
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold text-white mb-4 text-center">Originality.ai</h3>
-                    <div class="chart-container h-64 md:h-72"><canvas id="originalityPie"></canvas></div>
-                    <p class="text-center mt-4 text-gray-400">
-                        Rendimiento casi perfecto en detección de IA, pero con un 5% de falsos positivos en textos humanos.
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400">
+                    <h3 class="text-2xl font-bold text-white mb-2 text-center">Originality.ai</h3>
+                    <p class="text-center text-gray-400 mb-6">Alta sensibilidad, bajo riesgo.</p>
+                    <div class="chart-container"><canvas id="originalityPie"></canvas></div>
+                    <p class="text-center mt-6 text-gray-300 text-sm">
+                        Detecta casi todos los textos IA, pero con un 5% de falsos positivos en textos humanos.
                     </p>
                 </div>
                 
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold text-white mb-4 text-center">GPTZero</h3>
-                    <div class="chart-container h-64 md:h-72"><canvas id="gptzeroPie"></canvas></div>
-                    <p class="text-center mt-4 text-gray-400">
-                        El más fiable para textos humanos (solo 8.3% de error), pero falla en la detección del 13.3% de textos de IA.
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400">
+                    <h3 class="text-2xl font-bold text-white mb-2 text-center">GPTZero</h3>
+                    <p class="text-center text-gray-400 mb-6">Precisión destacada.</p>
+                    <div class="chart-container"><canvas id="gptzeroPie"></canvas></div>
+                    <p class="text-center mt-6 text-gray-300 text-sm">
+                        El más fiable para textos humanos (solo 8.33% de error), aunque falla en la detección del 13.33% de textos de IA.
                     </p>
                 </div>
 
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg md:col-span-2 lg:col-span-1">
-                    <h3 class="text-xl font-bold text-white mb-4 text-center">Copyleaks</h3>
-                    <div class="chart-container h-64 md:h-72"><canvas id="copyleaksPie"></canvas></div>
-                    <p class="text-center mt-4 text-gray-400">
-                        El rendimiento más bajo, con un 23.3% de error tanto en la detección de textos IA como en los humanos.
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-2xl font-bold text-white mb-2 text-center">Copyleaks</h3>
+                    <p class="text-center text-gray-400 mb-6">El más vulnerable al error.</p>
+                    <div class="chart-container"><canvas id="copyleaksPie"></canvas></div>
+                    <p class="text-center mt-6 text-gray-300 text-sm">
+                        El rendimiento más bajo, con un 23.33% de error en la detección de textos IA.
                     </p>
                 </div>
             </div>
             
-            <!-- Contenedor del nuevo gráfico de radar combinado -->
-            <div class="mt-16 bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h4 class="text-xl font-bold text-cyan-400 mb-4 text-center">Comparativa de Métricas de Rendimiento</h4>
-                <div class="radar-chart-container"><canvas id="combinedRadar"></canvas></div>
+            <div class="mt-20 bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700">
+                <h4 class="text-3xl font-bold text-cyan-400 mb-6 text-center">Comparativa de Métricas Clave</h4>
+                <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                    El gráfico de radar muestra que <span class="font-bold text-cyan-400">Originality.ai</span> es el detector más robusto, con la puntuación más alta en Exactitud y Sensibilidad. <span class="font-bold text-cyan-400">GPTZero</span> destaca en Precisión, lo que significa que minimiza los falsos positivos. En contraste, <span class="font-bold text-cyan-400">Copyleaks</span> muestra el rendimiento más bajo y menos equilibrado en todas las métricas.
+                </p>
+                <div class="radar-chart-container chart-container" style="max-height: 450px;"><canvas id="combinedRadar"></canvas></div>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-white text-center mb-8">El Gran Reto: La Detección de Textos Híbridos</h2>
-            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
-                La verdadera debilidad de los sistemas actuales aparece al analizar textos con autoría compartida. A continuación, se comparan las tasas de acierto y error para los tres detectores en este escenario.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold text-white mb-4">IA editada por Humanos (IA + H)</h3>
-                    <p class="text-gray-300 mb-4">
-                        En este tipo de texto, Originality.ai no comete errores, mientras que GPTZero y Copyleaks tienen tasas de error bajas pero existentes.
-                    </p>
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 relative section-title">
+                <i class="ph ph-cube text-5xl text-cyan-400"></i>
+                El Gran Reto: Textos Híbridos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">IA editada por Humanos (IA + H)</h3>
                     <div class="chart-container"><canvas id="iaPlusHChart"></canvas></div>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold text-white mb-4">Humanos ayudados por IA (H + IA)</h3>
-                    <p class="text-gray-300 mb-4">
-                        La detección de textos humanos con ayuda de IA es un desafío mayor, especialmente para GPTZero, que clasifica incorrectamente el 23.3% de estos textos.
-                    </p>
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:scale-105 hover:border-cyan-400">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Humanos ayudados por IA (H + IA)</h3>
                     <div class="chart-container"><canvas id="hPlusIAChart"></canvas></div>
                 </div>
             </div>
             
-            <!-- Sección ampliada con el nuevo gráfico de desglose de clasificación para textos híbridos -->
-            <div class="mt-16 bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h4 class="text-xl font-bold text-cyan-400 mb-4 text-center">Desglose de Clasificación para Textos IA + H (90 textos)</h4>
-                <p class="text-center text-gray-300 mb-2">
-                    Este gráfico muestra cómo cada herramienta clasificó los textos de autoría híbrida, reflejando tanto las clasificaciones correctas como las erróneas.
-                </p>
-                <p class="text-center text-gray-400 text-sm mb-6 italic">
-                    <span class="font-bold text-white">Nota:</span> Originality.ai no dispone de la etiqueta "híbrido", por lo que su acierto se clasifica como "IA". El 100% en esta categoría confirma la presencia de IA, aunque no detecte la intervención humana.
-                </p>
+            <div class="mt-20 bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700">
+                <h4 class="text-3xl font-bold text-cyan-400 mb-6 text-center">Impacto de la Intervención Humana en la Detección de Híbridos (IA+H)</h4>
                 <div class="chart-container" style="max-width: 800px; height: 400px;"><canvas id="iaPlusHBreakdownChart"></canvas></div>
             </div>
-
-            <!-- Nuevo gráfico para el desglose por tipo de intervención -->
-            <div class="mt-16 bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h4 class="text-xl font-bold text-cyan-400 mb-4 text-center">Impacto de la Intervención Humana en la Detección de Híbridos (IA+H)</h4>
-                <p class="text-center text-gray-300 mb-2">
-                    Este gráfico compara la tasa de detección de textos como "Híbrido" por cada herramienta, según el tipo de edición humana que se realizó.
-                </p>
-                <p class="text-center text-gray-400 text-sm mb-6 italic">
-                    <span class="font-bold text-white">Nota:</span> Originality.ai no puede clasificar un texto como "Híbrido", por lo que su tasa de acierto en esta categoría es del 0%.
-                </p>
-                <div class="chart-container" style="max-width: 800px; height: 400px;"><canvas id="hybridInterventionsChart"></canvas></div>
-            </div>
-
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-white text-center mb-8">Sesgo por Modelo de IA: No todos son Iguales</h2>
-            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
-                El rendimiento de los detectores depende en gran medida del LLM que generó el texto. Los textos de Gemini resultan ser los más difíciles de detectar para Copyleaks y GPTZero.
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 relative section-title">
+                <i class="ph ph-robot text-5xl text-cyan-400"></i>
+                Sesgo por Modelo de IA
+            </h2>
+            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                El rendimiento de los detectores varía según el modelo de IA que generó el texto. Copyleaks y GPTZero muestran debilidad con textos creados por Gemini.
             </p>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold text-white mb-4 text-center">Tasa de Detección de Textos IA por Modelo Generador</h3>
+            <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Tasa de Detección de Textos IA por Modelo Generador</h3>
                 <div class="chart-container" style="max-width: 800px; height: 400px;"><canvas id="recallByModelChart"></canvas></div>
             </div>
         </section>
 
-        <section class="text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Conclusiones Clave</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-cyan-900/50 p-6 rounded-lg">
-                    <h3 class="text-xl font-bold text-cyan-300 mb-2">1. Los Híbridos son Invisibles</h3>
-                    <p class="text-gray-300">
-                        Ninguna herramienta detecta de forma fiable los textos de autoría mixta. Originality.ai no los detecta y Copyleaks falla en el 20% de los casos.
+        <section class="text-center mt-20">
+            <h2 class="text-4xl font-bold text-white mb-12 relative section-title">
+                <i class="ph ph-lightbulb-fil text-5xl text-cyan-400"></i>
+                Conclusiones Clave del Estudio CorpIdentIA
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-cyan-900/40 p-8 rounded-2xl border-l-4 border-cyan-400 transition duration-300 hover:scale-105">
+                    <i class="ph ph-mask-happy-fill text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-cyan-300 mb-4">1. Los textos híbridos son invisibles para los detectores actuales</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Ninguna de las herramientas analizadas detecta de forma fiable los textos con autoría mixta (IA + humano o humano + IA). Originality.ai clasifica siempre como IA, incluso con intervención humana significativa, mientras que Copyleaks y GPTZero fallan entre un 20% y un 80% en estos casos.
                     </p>
                 </div>
-                <div class="bg-cyan-900/50 p-6 rounded-lg">
-                    <h3 class="text-xl font-bold text-cyan-300 mb-2">2. El Riesgo de Falsos Positivos</h3>
-                    <p class="text-gray-300">
-                        Herramientas como Originality.ai, aunque potentes, pueden acusar incorrectamente a humanos de usar IA (5% de los casos).
+                <div class="bg-cyan-900/40 p-8 rounded-2xl border-l-4 border-cyan-400 transition duration-300 hover:scale-105">
+                    <i class="ph ph-warning-fill text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-cyan-300 mb-4">2. Existe un riesgo real de falsos positivos</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Especialmente en textos humanos con estilo académico o técnico. Originality.ai puede clasificar erróneamente como IA hasta un 5% de textos puramente humanos. Este tipo de errores puede tener consecuencias graves en contextos evaluativos o legales.
                     </p>
                 </div>
-                <div class="bg-cyan-900/50 p-6 rounded-lg">
-                    <h3 class="text-xl font-bold text-cyan-300 mb-2">3. La Revisión Humana es Esencial</h3>
-                    <p class="text-gray-300">
-                        La opacidad y los errores de los detectores automáticos exigen una supervisión experta, especialmente en contextos forenses y académicos.
+                <div class="bg-cyan-900/40 p-8 rounded-2xl border-l-4 border-cyan-400 transition duration-300 hover:scale-105">
+                    <i class="ph ph-brain-fill text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-cyan-300 mb-4">3. El rendimiento varía según el modelo generador del texto</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Textos generados por Gemini son más difíciles de detectar para Copyleaks y GPTZero. Originality.ai detecta con mayor consistencia textos generados por los tres modelos (GPT-4, Gemini, Grok), pero sin diferenciar los casos mixtos.
+                    </p>
+                </div>
+                <div class="bg-cyan-900/40 p-8 rounded-2xl border-l-4 border-cyan-400 transition duration-300 hover:scale-105">
+                    <i class="ph ph-pen-nib-fill text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-cyan-300 mb-4">4. La intervención humana no es predecible</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Correcciones gramaticales o reescrituras humanas no siempre ayudan a “humanizar” el texto. Algunas intervenciones incluso dificultan la detección del componente IA, demostrando la complejidad de la co-creación.
+                    </p>
+                </div>
+                <div class="bg-cyan-900/40 p-8 rounded-2xl border-l-4 border-cyan-400 transition duration-300 hover:scale-105 lg:col-span-2">
+                    <i class="ph ph-magnifying-glass-fill text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-cyan-300 mb-4">5. Es imprescindible complementar la detección automática con revisión experta</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Los sistemas actuales carecen de transparencia y explicabilidad, por lo que la confianza ciega en ellos es peligrosa. La intervención de especialistas en lingüística forense y análisis del discurso es clave para una atribución fiable de autoría.
                     </p>
                 </div>
             </div>
         </section>
 
+        <!-- Nueva sección de agradecimientos -->
+        <section class="mt-20 text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 relative section-title">
+                <i class="ph ph-hand-heart-fill text-5xl text-cyan-400"></i>
+                Agradecimientos y Colaboradores
+            </h2>
+            <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 max-w-4xl mx-auto">
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                    El proyecto 'CorpIdentIA' ha sido posible gracias a la dedicación y el esfuerzo de un equipo de investigadores excepcionales.
+                </p>
+                
+                <!-- Lista de colaboradores sin afiliación universitaria -->
+                <div class="text-center md:text-left">
+                    <ul class="list-disc list-inside text-gray-300 space-y-1 pl-4 mx-auto md:mx-0">
+                        <li>Beatriz Esparcia</li>
+                        <li>Lucía Sánchez-Vecina</li>
+                        <li>Marco R. Lessi - Universitat Autònoma de Barcelona</li>
+                        <li>Laura Úbeda-Cuspinera - Universitat de Barcelona</li>
+                    </ul>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <h3 class="text-xl font-bold text-cyan-400 mb-4">Referencia del Proyecto</h3>
+                    <p class="text-gray-300 font-mono text-sm leading-relaxed mb-6 p-4 bg-gray-900 rounded-lg">
+                        CorpIdentIA – Corpus Identity & Authorship Intelligence Analysis (LF2025-D001)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 mb-4 text-gray-500 text-sm">
+            &copy; 2025 Laboratorio SQ-Lingüistas Forenses. Todos los derechos reservados.
+        </footer>
+
     </div>
 
     <script>
-        // Plugin para mostrar los porcentajes en las gráficas de anillo
-        Chart.register(ChartDataLabels);
+        window.onload = function() {
+            Chart.register(ChartDataLabels);
 
-        const tooltipCallback = {
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        title: function(tooltipItems) {
-                            const item = tooltipItems[0];
-                            let label = item.chart.data.labels[item.dataIndex];
-                            if (Array.isArray(label)) {
-                              return label.join(' ');
+            const wrapLabel = (label) => {
+                if (typeof label !== 'string' || label.length <= 12) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).length > 12 && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? currentLine + ' ' + word : word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const tooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                }
+                                return label;
                             }
-                            return label;
                         }
                     }
                 }
-            }
-        };
-        
-        const wrapLabel = (label) => {
-            if (label.length <= 16) return label;
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).length > 16 && currentLine.length > 0) {
-                    lines.push(currentLine);
-                    currentLine = word;
-                } else {
-                    currentLine = currentLine ? currentLine + ' ' + word : word;
-                }
-            }
-            lines.push(currentLine);
-            return lines;
-        };
-
-        const colors = {
-            // Colores más claros y distintivos para los gráficos de anillo
-            successAI: 'rgba(74, 222, 128, 0.7)',  // Verde para aciertos IA
-            errorAI: 'rgba(248, 113, 113, 0.7)',   // Rojo para errores IA
-            successHuman: 'rgba(59, 130, 246, 0.8)', // Azul para aciertos humanos
-            errorHuman: 'rgba(245, 158, 11, 0.8)',  // Naranja para errores humanos
-            // Colores para el resto de gráficos
-            cyan: 'rgba(34, 211, 238, 0.7)',
-            blue: 'rgba(59, 130, 246, 0.7)',
-            lightBlue: 'rgba(14, 165, 233, 0.7)',
-            darkBlue: 'rgba(30, 64, 175, 0.7)',
-            // Colores más contrastantes para el gráfico de radar combinado
-            combined: {
-                originality: {
-                    fill: 'rgba(34, 197, 94, 0.3)', // Verde
-                    border: 'rgba(34, 197, 94, 1)'
-                },
-                gptzero: {
-                    fill: 'rgba(139, 92, 246, 0.3)', // Morado
-                    border: 'rgba(139, 92, 246, 1)'
-                },
-                copyleaks: {
-                    fill: 'rgba(251, 146, 60, 0.3)', // Naranja
-                    border: 'rgba(251, 146, 60, 1)'
-                }
-            }
-        };
-
-        const pieChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        color: '#d1d5db',
-                        boxWidth: 15,
-                        padding: 20
+            };
+            
+            const colors = {
+                successAI: 'rgba(74, 222, 128, 0.9)',
+                errorAI: 'rgba(248, 113, 113, 0.9)',
+                successHuman: 'rgba(59, 130, 246, 0.9)',
+                errorHuman: 'rgba(245, 158, 11, 0.9)',
+                combined: {
+                    originality: {
+                        fill: 'rgba(34, 197, 94, 0.4)',
+                        border: 'rgba(34, 197, 94, 1)'
+                    },
+                    gptzero: {
+                        fill: 'rgba(139, 92, 246, 0.4)',
+                        border: 'rgba(139, 92, 246, 1)'
+                    },
+                    copyleaks: {
+                        fill: 'rgba(251, 146, 60, 0.4)',
+                        border: 'rgba(251, 146, 60, 1)'
                     }
                 },
-                tooltip: tooltipCallback.plugins.tooltip,
-                datalabels: {
-                    color: '#fff',
-                    font: {
-                        weight: 'bold',
-                        size: 16
-                    },
-                    formatter: (value, context) => {
-                        if (value === 0) return ''; // No mostrar 0%
-                        return value.toFixed(1) + '%';
-                    },
-                    textShadowBlur: 5,
-                    textShadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        };
-
-        new Chart(document.getElementById('originalityPie'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Aciertos en IA (TP)', 'Errores en IA (FN)', 'Aciertos en Humanos (TN)', 'Errores en Humanos (FP)'],
-                datasets: [{
-                    // Los datos para Originality.ai se extraen de los documentos
-                    // IA: 0% de error, Humanos: 5% de error (según documento de Originality.ai)
-                    data: [100, 0, 95, 5], 
-                    backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
-                    borderColor: '#1f2937',
-                    borderWidth: 2
-                }]
-            },
-            options: pieChartOptions
-        });
-
-        new Chart(document.getElementById('gptzeroPie'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Aciertos en IA (TP)', 'Errores en IA (FN)', 'Aciertos en Humanos (TN)', 'Errores en Humanos (FP)'],
-                datasets: [{
-                    // Los datos para GPTZero se extraen de los documentos
-                    // IA: 13.33% de error, Humanos: 8.33% de error (según documento de GPTZero)
-                    data: [86.7, 13.3, 91.7, 8.3], 
-                    backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
-                    borderColor: '#1f2937',
-                    borderWidth: 2
-                }]
-            },
-            options: pieChartOptions
-        });
-
-        new Chart(document.getElementById('copyleaksPie'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Aciertos en IA (TP)', 'Errores en IA (FN)', 'Aciertos en Humanos (TN)', 'Errores en Humanos (FP)'],
-                datasets: [{
-                    // Los datos para Copyleaks se extraen de los documentos
-                    // IA: 23.33% de error, Humanos: 23.33% de error (según documento de Copyleaks)
-                    data: [76.7, 23.3, 76.7, 23.3], 
-                    backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
-                    borderColor: '#1f2937',
-                    borderWidth: 2
-                }]
-            },
-            options: pieChartOptions
-        });
-
-        const stackedBarOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    stacked: true,
-                    ticks: { color: '#d1d5db' },
-                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                classification: {
+                    hybrid: 'rgba(34, 211, 238, 1)',
+                    ai: 'rgba(245, 158, 11, 0.8)',
+                    human: 'rgba(248, 113, 113, 0.8)',
                 },
-                y: {
-                    stacked: true,
-                    ticks: { color: '#d1d5db', callback: (value) => value + '%' },
-                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
-                }
-            },
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#d1d5db' }
-                },
-                tooltip: {
-                    ...tooltipCallback.plugins.tooltip,
-                    mode: 'index',
-                    intersect: false
-                },
-                datalabels: {
-                    color: '#000000', // Color negro para los porcentajes
-                    font: {
-                        weight: 'bold',
-                        size: 14
+                copyleaksLightBlue: 'rgba(14, 165, 233, 0.8)',
+                gptzeroBlue: 'rgba(59, 130, 246, 0.8)',
+                originalityGreen: 'rgba(74, 222, 128, 0.8)',
+                copyleaksBorder: 'rgba(14, 165, 233, 1)',
+                gptzeroBorder: 'rgba(59, 130, 246, 1)',
+                originalityBorder: 'rgba(74, 222, 128, 1)'
+            };
+
+            const pieChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#d1d5db'
+                        }
                     },
-                    formatter: (value, context) => {
-                        return value.toFixed(1) + '%';
+                    tooltip: {
+                        ...tooltipCallback.plugins.tooltip
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        formatter: (value, context) => {
+                            const label = context.chart.data.labels[context.dataIndex];
+                            if (value < 5) return null;
+                            return value.toFixed(1) + '%';
+                        },
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        }
                     }
                 }
-            }
-        };
+            };
 
-        new Chart(document.getElementById('iaPlusHChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
-                datasets: [
-                    {
-                        label: 'Aciertos (Clasificado correctamente)',
-                        // Datos extraídos de los documentos para IA+H (90 textos)
-                        // Originality.ai: 0% de error -> 100% acierto
-                        // GPTZero: 1.11% de error (1 de 90) -> 98.89% acierto
-                        // Copyleaks: 20% de error (18 de 90) -> 80% acierto
-                        data: [100, 98.89, 80],
-                        backgroundColor: colors.successAI,
-                    },
-                    {
-                        label: 'Errores (Clasificado incorrectamente)',
-                        // Datos extraídos de los documentos para IA+H (90 textos)
-                        // Originality.ai: 0% de error
-                        // GPTZero: 1.11% de error
-                        // Copyleaks: 20% de error
-                        data: [0, 1.11, 20],
-                        backgroundColor: colors.errorAI,
-                    }
-                ]
-            },
-            options: stackedBarOptions
-        });
-
-        new Chart(document.getElementById('hPlusIAChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
-                datasets: [
-                    {
-                        label: 'Aciertos (Clasificado correctamente)',
-                        // Datos extraídos de los documentos para H+IA (30 textos)
-                        // Originality.ai: 3.33% de error (1 de 30) -> 96.67% acierto
-                        // GPTZero: 23.33% de error (7 de 30) -> 76.67% acierto
-                        // Copyleaks: 10% de error (3 de 30) -> 90% acierto
-                        data: [96.67, 76.67, 90],
-                        backgroundColor: colors.successAI
-                    },
-                    {
-                        label: 'Errores (Clasificado incorrectamente)',
-                        // Datos extraídos de los documentos para H+IA (30 textos)
-                        // Originality.ai: 3.33% de error
-                        // GPTZero: 23.33% de error
-                        // Copyleaks: 10% de error
-                        data: [3.33, 23.33, 10],
-                        backgroundColor: colors.errorAI
-                    }
-                ]
-            },
-            options: stackedBarOptions
-        });
-
-        // Gráfico para el desglose de clasificación para textos IA + H
-        new Chart(document.getElementById('iaPlusHBreakdownChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
-                datasets: [
-                    {
-                        label: 'Correcto (Híbrido)',
-                        // Datos extraídos de los documentos. Total de textos IA+H es 90.
-                        // Originality.ai: TP Mixto = 0. -> 0%
-                        // GPTZero: TP Mixto = 19. -> (19/90) * 100 = 21.11%
-                        // Copyleaks: TP Mixto = 5. -> (5/90) * 100 = 5.56%
-                        data: [0, 21.11, 5.56],
-                        backgroundColor: 'rgba(34, 211, 238, 1)', // Color brillante para destacar
-                    },
-                    {
-                        label: 'Clasificado como IA',
-                        // Originality.ai: 100% acierto como IA puro. -> 100%
-                        // GPTZero: TP total = 70. -> (70/90) * 100 = 77.78%
-                        // Copyleaks: TP total = 67. -> (67/90) * 100 = 74.44%
-                        data: [100, 77.78, 74.44],
-                        backgroundColor: 'rgba(245, 158, 11, 0.4)', // Fondo semitransparente
-                    },
-                    {
-                        label: 'Clasificado como Humano',
-                        // Originality.ai: 0.
-                        // GPTZero: FN total = 1. -> (1/90) * 100 = 1.11%
-                        // Copyleaks: FN total = 18. -> (18/90) * 100 = 20%
-                        data: [0, 1.11, 20],
-                        backgroundColor: 'rgba(248, 113, 113, 0.4)', // Fondo semitransparente
-                    }
-                ]
-            },
-            options: {
+            // He quitado la función `callback` del `stackedBarOptions` para que los nombres de los detectores se muestren por defecto.
+            const stackedBarOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
                     x: {
                         stacked: true,
-                        ticks: { color: '#d1d5db' },
+                        ticks: {
+                            color: '#d1d5db',
+                            font: { size: 10 },
+                            autoSkip: false,
+                            maxRotation: 0,
+                        },
+                        grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: { color: '#d1d5db', callback: (value) => value + '%' },
+                        grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#d1d5db' }
+                    },
+                    tooltip: {
+                        ...tooltipCallback.plugins.tooltip,
+                        mode: 'index',
+                        intersect: false
+                    },
+                    datalabels: {
+                        color: '#000000',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value) => {
+                            return value.toFixed(1) + '%';
+                        }
+                    }
+                }
+            };
+
+            new Chart(document.getElementById('originalityPie'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Aciertos en IA', 'Aciertos en Humanos', 'Errores en Humanos'],
+                    datasets: [{
+                        data: [100, 95, 5],
+                        backgroundColor: [colors.successAI, colors.successHuman, colors.errorHuman],
+                        borderColor: '#1f2937',
+                        borderWidth: 2
+                    }]
+                },
+                options: pieChartOptions
+            });
+
+            new Chart(document.getElementById('gptzeroPie'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Aciertos en IA', 'Errores en IA', 'Aciertos en Humanos', 'Errores en Humanos'],
+                    datasets: [{
+                        data: [86.7, 13.3, 91.7, 8.3],
+                        backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
+                        borderColor: '#1f2937',
+                        borderWidth: 2
+                    }]
+                },
+                options: pieChartOptions
+            });
+
+            new Chart(document.getElementById('copyleaksPie'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Aciertos en IA', 'Errores en IA', 'Aciertos en Humanos', 'Errores en Humanos'],
+                    datasets: [{
+                        data: [76.7, 23.3, 76.7, 23.3],
+                        backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
+                        borderColor: '#1f2937',
+                        borderWidth: 2
+                    }]
+                },
+                options: pieChartOptions
+            });
+
+            new Chart(document.getElementById('iaPlusHChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
+                    datasets: [
+                        {
+                            label: 'Aciertos (Clasificado correctamente)',
+                            data: [100, 98.89, 80],
+                            backgroundColor: colors.successAI,
+                        },
+                        {
+                            label: 'Errores (Clasificado incorrectamente)',
+                            data: [0, 1.11, 20],
+                            backgroundColor: colors.errorAI,
+                        }
+                    ]
+                },
+                options: stackedBarOptions
+            });
+
+            new Chart(document.getElementById('hPlusIAChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
+                    datasets: [
+                        {
+                            label: 'Aciertos (Clasificado correctamente)',
+                            data: [96.67, 76.67, 90],
+                            backgroundColor: colors.successAI
+                        },
+                        {
+                            label: 'Errores (Clasificado incorrectamente)',
+                            data: [3.33, 23.33, 10],
+                            backgroundColor: colors.errorAI
+                        }
+                    ]
+                },
+                options: stackedBarOptions
+            });
+
+            const iaPlusHBreakdownChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: {
+                            color: '#d1d5db',
+                            font: { size: 10 },
+                            autoSkip: false,
+                            maxRotation: 0,
+                        },
                         grid: { display: false }
                     },
                     y: {
@@ -529,55 +698,45 @@
                         }
                     },
                     datalabels: {
-                        color: '#000000', // Color negro para los porcentajes
+                        color: '#000000',
                         font: {
                             weight: 'bold',
                             size: 14
                         },
-                        formatter: (value, context) => {
+                        formatter: (value) => {
                             if (value === 0) return '';
                             return value.toFixed(1) + '%';
                         }
                     }
                 }
-            }
-        });
-        
-        new Chart(document.getElementById('recallByModelChart'), {
-            type: 'bar',
-            data: {
-                labels: ['ChatGPT', 'Gemini', 'Grok'],
-                datasets: [
-                    {
-                        label: 'Copyleaks',
-                        // Datos extraídos del documento `DATOS NECESARIOS PARA LAS GRÁFICAS.docx`
-                        // ChatGPT: 9/10=90%, Gemini: 4/10=40%, Grok: 10/10=100%
-                        data: [90, 40, 100], 
-                        backgroundColor: colors.lightBlue,
-                        borderColor: 'rgba(14, 165, 233, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'GPTZero',
-                        // Datos extraídos del documento `DATOS NECESARIOS PARA LAS GRÁFICAS GTPZero.docx`
-                        // ChatGPT: 9/10=90%, Gemini: 8/10=80%, Grok: 9/10=90%
-                        data: [90, 80, 90], 
-                        backgroundColor: colors.blue,
-                        borderColor: 'rgba(59, 130, 246, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Originality.ai',
-                        // Datos extraídos del documento `DATOS NECESARIOS PARA LAS GRÁFICAS Originality.docx`
-                        // ChatGPT: 10/10=100%, Gemini: 10/10=100%, Grok: 10/10=100%
-                        data: [100, 100, 100], 
-                        backgroundColor: colors.successAI,
-                        borderColor: 'rgba(74, 222, 128, 1)',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
+            };
+
+            new Chart(document.getElementById('iaPlusHBreakdownChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
+                    datasets: [
+                        {
+                            label: 'Correcto (Híbrido)',
+                            data: [0, 21.11, 5.56],
+                            backgroundColor: colors.classification.hybrid,
+                        },
+                        {
+                            label: 'Clasificado como IA',
+                            data: [100, 77.78, 74.44],
+                            backgroundColor: colors.classification.ai,
+                        },
+                        {
+                            label: 'Clasificado como Humano',
+                            data: [0, 1.11, 20],
+                            backgroundColor: colors.classification.human,
+                        }
+                    ]
+                },
+                options: iaPlusHBreakdownChartOptions
+            });
+            
+            const recallByModelChartOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
                 indexAxis: 'y',
@@ -589,7 +748,10 @@
                         grid: { color: 'rgba(209, 213, 219, 0.1)' }
                     },
                     y: {
-                        ticks: { color: '#d1d5db' },
+                        ticks: {
+                            color: '#d1d5db',
+                            font: { size: 12 }
+                        },
                         grid: { display: false }
                     }
                 },
@@ -614,186 +776,130 @@
                         }
                     },
                     datalabels: {
-                        color: '#000000', // Color negro para los porcentajes
+                        color: '#000000',
                         font: {
                             weight: 'bold',
                             size: 14
                         },
-                        formatter: (value, context) => {
-                            if (value === 0) return ''; // No mostrar 0%
+                        formatter: (value) => {
+                            if (value === 0) return '';
                             return value.toFixed(1) + '%';
                         }
                     }
                 }
-            }
-        });
+            };
 
-        // Opciones del gráfico de radar para las métricas de rendimiento
-        const combinedRadarChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                r: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100,
-                    ticks: {
-                        color: '#d1d5db',
-                        backdropColor: 'rgba(31, 41, 55, 0.8)',
-                        callback: (value) => value + '%'
-                    },
-                    pointLabels: {
-                        color: '#fff',
-                        font: {
-                            size: 14,
-                            weight: 'bold'
+            new Chart(document.getElementById('recallByModelChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['ChatGPT', 'Gemini', 'Grok'],
+                    datasets: [
+                        {
+                            label: 'Copyleaks',
+                            data: [90, 40, 100],
+                            backgroundColor: colors.copyleaksLightBlue,
+                            borderColor: colors.copyleaksBorder,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'GPTZero',
+                            data: [90, 80, 90],
+                            backgroundColor: colors.gptzeroBlue,
+                            borderColor: colors.gptzeroBorder,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Originality.ai',
+                            data: [100, 100, 100],
+                            backgroundColor: colors.originalityGreen,
+                            borderColor: colors.originalityBorder,
+                            borderWidth: 1
                         }
-                    },
-                    grid: {
-                        color: 'rgba(209, 213, 219, 0.2)'
-                    },
-                    angleLines: {
-                        color: 'rgba(209, 213, 219, 0.2)'
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        color: '#d1d5db',
-                        boxWidth: 20
-                    }
+                    ]
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return context.dataset.label + ': ' + context.parsed.r + '%';
-                        }
-                    }
-                },
-                datalabels: {
-                    display: false
-                }
-            }
-        };
-
-        // Gráfico de radar combinado para los tres detectores
-        new Chart(document.getElementById('combinedRadar'), {
-            type: 'radar',
-            data: {
-                labels: ['Exactitud', 'Precisión', 'Sensibilidad', 'F1-Score'],
-                datasets: [
-                    {
-                        label: 'Originality.ai',
-                        data: [95.00, 90.91, 100.00, 95.24],
-                        backgroundColor: colors.combined.originality.fill,
-                        borderColor: colors.combined.originality.border,
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'GPTZero',
-                        data: [91.7, 96.3, 86.7, 91.2],
-                        backgroundColor: colors.combined.gptzero.fill,
-                        borderColor: colors.combined.gptzero.border,
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Copyleaks',
-                        data: [76.7, 76.7, 76.7, 76.7],
-                        backgroundColor: colors.combined.copyleaks.fill,
-                        borderColor: colors.combined.copyleaks.border,
-                        borderWidth: 2
-                    }
-                ]
-            },
-            options: combinedRadarChartOptions
-        });
-
-        // Nuevo gráfico de barras para las intervenciones humanas en textos híbridos
-        const hybridInterventionsData = {
-            labels: ['Errores Gramaticales', 'Frases Humanas', 'Errores de Puntuación'],
-            datasets: [
-                {
-                    label: 'GPTZero (Aciertos Híbrido)',
-                    // Datos de TP Mixto / Total de textos por categoría (10 de cada modelo, 3 modelos = 30)
-                    data: [(7/30)*100, (5/30)*100, (7/30)*100],
-                    backgroundColor: 'rgba(139, 92, 246, 0.7)', // Morado
-                    borderColor: 'rgba(139, 92, 246, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Copyleaks (Aciertos Híbrido)',
-                    data: [(1/30)*100, (2/30)*100, (2/30)*100],
-                    backgroundColor: 'rgba(251, 146, 60, 0.7)', // Naranja
-                    borderColor: 'rgba(251, 146, 60, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Originality.ai (Aciertos Híbrido)',
-                    data: [0, 0, 0],
-                    backgroundColor: 'rgba(34, 197, 94, 0.7)', // Verde
-                    borderColor: 'rgba(34, 197, 94, 1)',
-                    borderWidth: 1
-                }
-            ]
-        };
-
-        const hybridInterventionsOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    ticks: { color: '#d1d5db' },
-                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    ticks: { color: '#d1d5db', callback: (value) => value + '%' },
-                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
-                }
-            },
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#d1d5db' }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
+                options: recallByModelChartOptions
+            });
+            
+            const combinedRadarChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            color: '#d1d5db',
+                            backdropColor: 'rgba(31, 41, 55, 0.8)',
+                            callback: (value) => value + '%'
+                        },
+                        pointLabels: {
+                            color: '#fff',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
                             }
-                            if (context.parsed.y !== null) {
-                                label += context.parsed.y.toFixed(2) + '%';
-                            }
-                            return label;
+                        },
+                        grid: {
+                            color: 'rgba(209, 213, 219, 0.2)'
+                        },
+                        angleLines: {
+                            color: 'rgba(209, 213, 219, 0.2)'
                         }
                     }
                 },
-                datalabels: {
-                    color: '#fff',
-                    font: {
-                        weight: 'bold',
-                        size: 14
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#d1d5db',
+                            boxWidth: 20
+                        }
                     },
-                    formatter: (value) => {
-                        if (value === 0) return '';
-                        return value.toFixed(1) + '%';
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.r + '%';
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: false
                     }
                 }
-            }
+            };
+            
+            new Chart(document.getElementById('combinedRadar'), {
+                type: 'radar',
+                data: {
+                    labels: ['Exactitud', 'Precisión', 'Sensibilidad', 'F1-Score'],
+                    datasets: [
+                        {
+                            label: 'Originality.ai',
+                            data: [95.00, 90.91, 100.00, 95.24],
+                            backgroundColor: colors.combined.originality.fill,
+                            borderColor: colors.combined.originality.border,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'GPTZero',
+                            data: [91.7, 96.3, 86.7, 91.2],
+                            backgroundColor: colors.combined.gptzero.fill,
+                            borderColor: colors.combined.gptzero.border,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Copyleaks',
+                            data: [76.7, 76.7, 76.7, 76.7],
+                            backgroundColor: colors.combined.copyleaks.fill,
+                            borderColor: colors.combined.copyleaks.border,
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: combinedRadarChartOptions
+            });
         };
-
-        new Chart(document.getElementById('hybridInterventionsChart'), {
-            type: 'bar',
-            data: hybridInterventionsData,
-            options: hybridInterventionsOptions
-        });
-
     </script>
 </body>
 </html>
-
