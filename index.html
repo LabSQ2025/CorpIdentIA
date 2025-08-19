@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Fiabilidad de Detectores de IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .stat-card h3 {
+            font-size: 4rem;
+            line-height: 1;
+        }
+        /* Estilos específicos para el gráfico de radar */
+        .radar-chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+        }
+        @media (min-width: 768px) {
+            .radar-chart-container {
+                height: 450px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">¿IA, Humano o Híbrido?</h1>
+            <p class="text-xl text-cyan-400">Fiabilidad de Herramientas de Detección de IA en Textos Multiautoría</p>
+            <p class="text-sm text-gray-400 mt-2">Basado en el estudio del proyecto CorpIdentIA</p>
+        </header>
+
+        <section class="mb-16">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">El Desafío de la Autoría en la Era de la IA</h2>
+                <p class="text-lg text-gray-300">
+                    La rápida adopción de Grandes Modelos de Lenguaje (LLM, por sus siglas en inglés) como ChatGPT, Gemini y Grok ha creado una necesidad urgente de verificar la autoría de los textos. En contextos críticos como el académico, legal o forense, saber si un texto fue escrito por un humano, una IA o una combinación de ambos es fundamental. Este estudio evalúa tres detectores comerciales para determinar su fiabilidad en esta tarea.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-white text-center mb-8">Metodología del Estudio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Corpus Experimental</h3>
+                    <p class="text-5xl font-bold text-white">180</p>
+                    <p class="text-gray-400">textos en español analizados</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Modalidades de Texto</h3>
+                    <ul class="text-left list-disc list-inside text-gray-300 mx-auto inline-block">
+                        <li>100% Humano (H)</li>
+                        <li>100% IA (ChatGPT, Gemini, Grok)</li>
+                        <li>Humano + IA (H+IA)</li>
+                        <li>IA + Humano (IA+H)</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Detectores Evaluados</h3>
+                     <ul class="text-gray-300 space-y-2">
+                        <li><span class="font-bold text-white">Originality.ai</span></li>
+                        <li><span class="font-bold text-white">GPTZero</span></li>
+                        <li><span class="font-bold text-white">Copyleaks</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-white text-center mb-8">Rendimiento en Textos Puros: Humano vs. IA</h2>
+            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
+                La fiabilidad de cada herramienta varía en la tarea más simple de clasificar textos 100% humanos o 100% de IA. A continuación se presentan las métricas de rendimiento clave.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-white mb-4 text-center">Originality.ai</h3>
+                    <div class="chart-container h-64 md:h-72"><canvas id="originalityPie"></canvas></div>
+                    <p class="text-center mt-4 text-gray-400">
+                        Rendimiento casi perfecto en detección de IA, pero con un 5% de falsos positivos en textos humanos.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-white mb-4 text-center">GPTZero</h3>
+                    <div class="chart-container h-64 md:h-72"><canvas id="gptzeroPie"></canvas></div>
+                    <p class="text-center mt-4 text-gray-400">
+                        El más fiable para textos humanos (solo 8.3% de error), pero falla en la detección del 13.3% de textos de IA.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-bold text-white mb-4 text-center">Copyleaks</h3>
+                    <div class="chart-container h-64 md:h-72"><canvas id="copyleaksPie"></canvas></div>
+                    <p class="text-center mt-4 text-gray-400">
+                        El rendimiento más bajo, con un 23.3% de error tanto en la detección de textos IA como en los humanos.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Contenedor del nuevo gráfico de radar combinado -->
+            <div class="mt-16 bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h4 class="text-xl font-bold text-cyan-400 mb-4 text-center">Comparativa de Métricas de Rendimiento</h4>
+                <div class="radar-chart-container"><canvas id="combinedRadar"></canvas></div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-white text-center mb-8">El Gran Reto: La Detección de Textos Híbridos</h2>
+            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
+                La verdadera debilidad de los sistemas actuales aparece al analizar textos con autoría compartida. A continuación, se comparan las tasas de acierto y error para los tres detectores en este escenario.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-white mb-4">IA editada por Humanos (IA + H)</h3>
+                    <p class="text-gray-300 mb-4">
+                        En este tipo de texto, Originality.ai no comete errores, mientras que GPTZero y Copyleaks tienen tasas de error bajas pero existentes.
+                    </p>
+                    <div class="chart-container"><canvas id="iaPlusHChart"></canvas></div>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-white mb-4">Humanos ayudados por IA (H + IA)</h3>
+                    <p class="text-gray-300 mb-4">
+                        La detección de textos humanos con ayuda de IA es un desafío mayor, especialmente para GPTZero, que clasifica incorrectamente el 23.3% de estos textos.
+                    </p>
+                    <div class="chart-container"><canvas id="hPlusIAChart"></canvas></div>
+                </div>
+            </div>
+            
+            <!-- Sección ampliada con el nuevo gráfico de desglose de clasificación para textos híbridos -->
+            <div class="mt-16 bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h4 class="text-xl font-bold text-cyan-400 mb-4 text-center">Desglose de Clasificación para Textos IA + H (90 textos)</h4>
+                <p class="text-center text-gray-300 mb-2">
+                    Este gráfico muestra cómo cada herramienta clasificó los textos de autoría híbrida, reflejando tanto las clasificaciones correctas como las erróneas.
+                </p>
+                <p class="text-center text-gray-400 text-sm mb-6 italic">
+                    <span class="font-bold text-white">Nota:</span> Originality.ai no dispone de la etiqueta "híbrido", por lo que su acierto se clasifica como "IA". El 100% en esta categoría confirma la presencia de IA, aunque no detecte la intervención humana.
+                </p>
+                <div class="chart-container" style="max-width: 800px; height: 400px;"><canvas id="iaPlusHBreakdownChart"></canvas></div>
+            </div>
+
+            <!-- Nuevo gráfico para el desglose por tipo de intervención -->
+            <div class="mt-16 bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h4 class="text-xl font-bold text-cyan-400 mb-4 text-center">Impacto de la Intervención Humana en la Detección de Híbridos (IA+H)</h4>
+                <p class="text-center text-gray-300 mb-2">
+                    Este gráfico compara la tasa de detección de textos como "Híbrido" por cada herramienta, según el tipo de edición humana que se realizó.
+                </p>
+                <p class="text-center text-gray-400 text-sm mb-6 italic">
+                    <span class="font-bold text-white">Nota:</span> Originality.ai no puede clasificar un texto como "Híbrido", por lo que su tasa de acierto en esta categoría es del 0%.
+                </p>
+                <div class="chart-container" style="max-width: 800px; height: 400px;"><canvas id="hybridInterventionsChart"></canvas></div>
+            </div>
+
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-white text-center mb-8">Sesgo por Modelo de IA: No todos son Iguales</h2>
+            <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
+                El rendimiento de los detectores depende en gran medida del LLM que generó el texto. Los textos de Gemini resultan ser los más difíciles de detectar para Copyleaks y GPTZero.
+            </p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold text-white mb-4 text-center">Tasa de Detección de Textos IA por Modelo Generador</h3>
+                <div class="chart-container" style="max-width: 800px; height: 400px;"><canvas id="recallByModelChart"></canvas></div>
+            </div>
+        </section>
+
+        <section class="text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Conclusiones Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cyan-900/50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-cyan-300 mb-2">1. Los Híbridos son Invisibles</h3>
+                    <p class="text-gray-300">
+                        Ninguna herramienta detecta de forma fiable los textos de autoría mixta. Originality.ai no los detecta y Copyleaks falla en el 20% de los casos.
+                    </p>
+                </div>
+                <div class="bg-cyan-900/50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-cyan-300 mb-2">2. El Riesgo de Falsos Positivos</h3>
+                    <p class="text-gray-300">
+                        Herramientas como Originality.ai, aunque potentes, pueden acusar incorrectamente a humanos de usar IA (5% de los casos).
+                    </p>
+                </div>
+                <div class="bg-cyan-900/50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-cyan-300 mb-2">3. La Revisión Humana es Esencial</h3>
+                    <p class="text-gray-300">
+                        La opacidad y los errores de los detectores automáticos exigen una supervisión experta, especialmente en contextos forenses y académicos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Plugin para mostrar los porcentajes en las gráficas de anillo
+        Chart.register(ChartDataLabels);
+
+        const tooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        const wrapLabel = (label) => {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > 16 && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const colors = {
+            // Colores más claros y distintivos para los gráficos de anillo
+            successAI: 'rgba(74, 222, 128, 0.7)',  // Verde para aciertos IA
+            errorAI: 'rgba(248, 113, 113, 0.7)',   // Rojo para errores IA
+            successHuman: 'rgba(59, 130, 246, 0.8)', // Azul para aciertos humanos
+            errorHuman: 'rgba(245, 158, 11, 0.8)',  // Naranja para errores humanos
+            // Colores para el resto de gráficos
+            cyan: 'rgba(34, 211, 238, 0.7)',
+            blue: 'rgba(59, 130, 246, 0.7)',
+            lightBlue: 'rgba(14, 165, 233, 0.7)',
+            darkBlue: 'rgba(30, 64, 175, 0.7)',
+            // Colores más contrastantes para el gráfico de radar combinado
+            combined: {
+                originality: {
+                    fill: 'rgba(34, 197, 94, 0.3)', // Verde
+                    border: 'rgba(34, 197, 94, 1)'
+                },
+                gptzero: {
+                    fill: 'rgba(139, 92, 246, 0.3)', // Morado
+                    border: 'rgba(139, 92, 246, 1)'
+                },
+                copyleaks: {
+                    fill: 'rgba(251, 146, 60, 0.3)', // Naranja
+                    border: 'rgba(251, 146, 60, 1)'
+                }
+            }
+        };
+
+        const pieChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#d1d5db',
+                        boxWidth: 15,
+                        padding: 20
+                    }
+                },
+                tooltip: tooltipCallback.plugins.tooltip,
+                datalabels: {
+                    color: '#fff',
+                    font: {
+                        weight: 'bold',
+                        size: 16
+                    },
+                    formatter: (value, context) => {
+                        if (value === 0) return ''; // No mostrar 0%
+                        return value.toFixed(1) + '%';
+                    },
+                    textShadowBlur: 5,
+                    textShadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        };
+
+        new Chart(document.getElementById('originalityPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Aciertos en IA (TP)', 'Errores en IA (FN)', 'Aciertos en Humanos (TN)', 'Errores en Humanos (FP)'],
+                datasets: [{
+                    // Los datos para Originality.ai se extraen de los documentos
+                    // IA: 0% de error, Humanos: 5% de error (según documento de Originality.ai)
+                    data: [100, 0, 95, 5], 
+                    backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
+                    borderColor: '#1f2937',
+                    borderWidth: 2
+                }]
+            },
+            options: pieChartOptions
+        });
+
+        new Chart(document.getElementById('gptzeroPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Aciertos en IA (TP)', 'Errores en IA (FN)', 'Aciertos en Humanos (TN)', 'Errores en Humanos (FP)'],
+                datasets: [{
+                    // Los datos para GPTZero se extraen de los documentos
+                    // IA: 13.33% de error, Humanos: 8.33% de error (según documento de GPTZero)
+                    data: [86.7, 13.3, 91.7, 8.3], 
+                    backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
+                    borderColor: '#1f2937',
+                    borderWidth: 2
+                }]
+            },
+            options: pieChartOptions
+        });
+
+        new Chart(document.getElementById('copyleaksPie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Aciertos en IA (TP)', 'Errores en IA (FN)', 'Aciertos en Humanos (TN)', 'Errores en Humanos (FP)'],
+                datasets: [{
+                    // Los datos para Copyleaks se extraen de los documentos
+                    // IA: 23.33% de error, Humanos: 23.33% de error (según documento de Copyleaks)
+                    data: [76.7, 23.3, 76.7, 23.3], 
+                    backgroundColor: [colors.successAI, colors.errorAI, colors.successHuman, colors.errorHuman],
+                    borderColor: '#1f2937',
+                    borderWidth: 2
+                }]
+            },
+            options: pieChartOptions
+        });
+
+        const stackedBarOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: { color: '#d1d5db' },
+                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { color: '#d1d5db', callback: (value) => value + '%' },
+                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#d1d5db' }
+                },
+                tooltip: {
+                    ...tooltipCallback.plugins.tooltip,
+                    mode: 'index',
+                    intersect: false
+                },
+                datalabels: {
+                    color: '#000000', // Color negro para los porcentajes
+                    font: {
+                        weight: 'bold',
+                        size: 14
+                    },
+                    formatter: (value, context) => {
+                        return value.toFixed(1) + '%';
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('iaPlusHChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
+                datasets: [
+                    {
+                        label: 'Aciertos (Clasificado correctamente)',
+                        // Datos extraídos de los documentos para IA+H (90 textos)
+                        // Originality.ai: 0% de error -> 100% acierto
+                        // GPTZero: 1.11% de error (1 de 90) -> 98.89% acierto
+                        // Copyleaks: 20% de error (18 de 90) -> 80% acierto
+                        data: [100, 98.89, 80],
+                        backgroundColor: colors.successAI,
+                    },
+                    {
+                        label: 'Errores (Clasificado incorrectamente)',
+                        // Datos extraídos de los documentos para IA+H (90 textos)
+                        // Originality.ai: 0% de error
+                        // GPTZero: 1.11% de error
+                        // Copyleaks: 20% de error
+                        data: [0, 1.11, 20],
+                        backgroundColor: colors.errorAI,
+                    }
+                ]
+            },
+            options: stackedBarOptions
+        });
+
+        new Chart(document.getElementById('hPlusIAChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
+                datasets: [
+                    {
+                        label: 'Aciertos (Clasificado correctamente)',
+                        // Datos extraídos de los documentos para H+IA (30 textos)
+                        // Originality.ai: 3.33% de error (1 de 30) -> 96.67% acierto
+                        // GPTZero: 23.33% de error (7 de 30) -> 76.67% acierto
+                        // Copyleaks: 10% de error (3 de 30) -> 90% acierto
+                        data: [96.67, 76.67, 90],
+                        backgroundColor: colors.successAI
+                    },
+                    {
+                        label: 'Errores (Clasificado incorrectamente)',
+                        // Datos extraídos de los documentos para H+IA (30 textos)
+                        // Originality.ai: 3.33% de error
+                        // GPTZero: 23.33% de error
+                        // Copyleaks: 10% de error
+                        data: [3.33, 23.33, 10],
+                        backgroundColor: colors.errorAI
+                    }
+                ]
+            },
+            options: stackedBarOptions
+        });
+
+        // Gráfico para el desglose de clasificación para textos IA + H
+        new Chart(document.getElementById('iaPlusHBreakdownChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Originality.ai', 'GPTZero', 'Copyleaks'],
+                datasets: [
+                    {
+                        label: 'Correcto (Híbrido)',
+                        // Datos extraídos de los documentos. Total de textos IA+H es 90.
+                        // Originality.ai: TP Mixto = 0. -> 0%
+                        // GPTZero: TP Mixto = 19. -> (19/90) * 100 = 21.11%
+                        // Copyleaks: TP Mixto = 5. -> (5/90) * 100 = 5.56%
+                        data: [0, 21.11, 5.56],
+                        backgroundColor: 'rgba(34, 211, 238, 1)', // Color brillante para destacar
+                    },
+                    {
+                        label: 'Clasificado como IA',
+                        // Originality.ai: 100% acierto como IA puro. -> 100%
+                        // GPTZero: TP total = 70. -> (70/90) * 100 = 77.78%
+                        // Copyleaks: TP total = 67. -> (67/90) * 100 = 74.44%
+                        data: [100, 77.78, 74.44],
+                        backgroundColor: 'rgba(245, 158, 11, 0.4)', // Fondo semitransparente
+                    },
+                    {
+                        label: 'Clasificado como Humano',
+                        // Originality.ai: 0.
+                        // GPTZero: FN total = 1. -> (1/90) * 100 = 1.11%
+                        // Copyleaks: FN total = 18. -> (18/90) * 100 = 20%
+                        data: [0, 1.11, 20],
+                        backgroundColor: 'rgba(248, 113, 113, 0.4)', // Fondo semitransparente
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: { color: '#d1d5db' },
+                        grid: { display: false }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { color: '#d1d5db', callback: (value) => value + '%' },
+                        grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#d1d5db' }
+                    },
+                    tooltip: {
+                        ...tooltipCallback.plugins.tooltip,
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        color: '#000000', // Color negro para los porcentajes
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, context) => {
+                            if (value === 0) return '';
+                            return value.toFixed(1) + '%';
+                        }
+                    }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('recallByModelChart'), {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT', 'Gemini', 'Grok'],
+                datasets: [
+                    {
+                        label: 'Copyleaks',
+                        // Datos extraídos del documento `DATOS NECESARIOS PARA LAS GRÁFICAS.docx`
+                        // ChatGPT: 9/10=90%, Gemini: 4/10=40%, Grok: 10/10=100%
+                        data: [90, 40, 100], 
+                        backgroundColor: colors.lightBlue,
+                        borderColor: 'rgba(14, 165, 233, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'GPTZero',
+                        // Datos extraídos del documento `DATOS NECESARIOS PARA LAS GRÁFICAS GTPZero.docx`
+                        // ChatGPT: 9/10=90%, Gemini: 8/10=80%, Grok: 9/10=90%
+                        data: [90, 80, 90], 
+                        backgroundColor: colors.blue,
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Originality.ai',
+                        // Datos extraídos del documento `DATOS NECESARIOS PARA LAS GRÁFICAS Originality.docx`
+                        // ChatGPT: 10/10=100%, Gemini: 10/10=100%, Grok: 10/10=100%
+                        data: [100, 100, 100], 
+                        backgroundColor: colors.successAI,
+                        borderColor: 'rgba(74, 222, 128, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { color: '#d1d5db', callback: (value) => value + '%' },
+                        grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: '#d1d5db' },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#d1d5db' }
+                    },
+                    tooltip: {
+                        ...tooltipCallback.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        color: '#000000', // Color negro para los porcentajes
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, context) => {
+                            if (value === 0) return ''; // No mostrar 0%
+                            return value.toFixed(1) + '%';
+                        }
+                    }
+                }
+            }
+        });
+
+        // Opciones del gráfico de radar para las métricas de rendimiento
+        const combinedRadarChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        color: '#d1d5db',
+                        backdropColor: 'rgba(31, 41, 55, 0.8)',
+                        callback: (value) => value + '%'
+                    },
+                    pointLabels: {
+                        color: '#fff',
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(209, 213, 219, 0.2)'
+                    },
+                    angleLines: {
+                        color: 'rgba(209, 213, 219, 0.2)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#d1d5db',
+                        boxWidth: 20
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.parsed.r + '%';
+                        }
+                    }
+                },
+                datalabels: {
+                    display: false
+                }
+            }
+        };
+
+        // Gráfico de radar combinado para los tres detectores
+        new Chart(document.getElementById('combinedRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['Exactitud', 'Precisión', 'Sensibilidad', 'F1-Score'],
+                datasets: [
+                    {
+                        label: 'Originality.ai',
+                        data: [95.00, 90.91, 100.00, 95.24],
+                        backgroundColor: colors.combined.originality.fill,
+                        borderColor: colors.combined.originality.border,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'GPTZero',
+                        data: [91.7, 96.3, 86.7, 91.2],
+                        backgroundColor: colors.combined.gptzero.fill,
+                        borderColor: colors.combined.gptzero.border,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Copyleaks',
+                        data: [76.7, 76.7, 76.7, 76.7],
+                        backgroundColor: colors.combined.copyleaks.fill,
+                        borderColor: colors.combined.copyleaks.border,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: combinedRadarChartOptions
+        });
+
+        // Nuevo gráfico de barras para las intervenciones humanas en textos híbridos
+        const hybridInterventionsData = {
+            labels: ['Errores Gramaticales', 'Frases Humanas', 'Errores de Puntuación'],
+            datasets: [
+                {
+                    label: 'GPTZero (Aciertos Híbrido)',
+                    // Datos de TP Mixto / Total de textos por categoría (10 de cada modelo, 3 modelos = 30)
+                    data: [(7/30)*100, (5/30)*100, (7/30)*100],
+                    backgroundColor: 'rgba(139, 92, 246, 0.7)', // Morado
+                    borderColor: 'rgba(139, 92, 246, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Copyleaks (Aciertos Híbrido)',
+                    data: [(1/30)*100, (2/30)*100, (2/30)*100],
+                    backgroundColor: 'rgba(251, 146, 60, 0.7)', // Naranja
+                    borderColor: 'rgba(251, 146, 60, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Originality.ai (Aciertos Híbrido)',
+                    data: [0, 0, 0],
+                    backgroundColor: 'rgba(34, 197, 94, 0.7)', // Verde
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        const hybridInterventionsOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: { color: '#d1d5db' },
+                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#d1d5db', callback: (value) => value + '%' },
+                    grid: { color: 'rgba(209, 213, 219, 0.1)' }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#d1d5db' }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(2) + '%';
+                            }
+                            return label;
+                        }
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: {
+                        weight: 'bold',
+                        size: 14
+                    },
+                    formatter: (value) => {
+                        if (value === 0) return '';
+                        return value.toFixed(1) + '%';
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('hybridInterventionsChart'), {
+            type: 'bar',
+            data: hybridInterventionsData,
+            options: hybridInterventionsOptions
+        });
+
+    </script>
+</body>
+</html>
+
